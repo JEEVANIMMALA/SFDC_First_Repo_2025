@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_small" style="background-color:green">
+            <lightning-slider label="Volume" value={sliderValue} onchange={handleChange}></lightning-slider>
+        </div>
+        <div class="slds-m-around_large slds-p-around_large" >
+            <p>{sliderValue}</p>
+        </div>
+    </lightning-card>
+
+    <lightning-card>
+        <lightning-input type="text" value="inputText" onkeyup={inputTake}></lightning-input>
+
+        <lightning-button varient="brand" label="send" onclick={sendText}></lightning-button>
+    </lightning-card>
+</template>
