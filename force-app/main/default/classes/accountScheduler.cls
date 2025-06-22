@@ -19,6 +19,7 @@ global class accountScheduler implements Schedulable {
         List<String> emailstr= new List<String>();
         emailstr.add('jeevan.sai.nimmala@accenture.com');
         emailstr.add('jeevansainimmala@gmail.com');
+        
         msg.setToAddresses(emailstr);
         msg.setSubject('Batch apex Updated');
         msg.setPlainTextBody('Schedule bacth org executed these accountss '+accountsToBeUpdated);
