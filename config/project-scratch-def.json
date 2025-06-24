@@ -3,6 +3,12 @@
   "edition": "Developer",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
+    "securitySettings": {
+      "sessionSettings": {
+        "sessionTimeout": "TwelveHours",
+        "lockSessionsToIp": false
+      }
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
