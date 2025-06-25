@@ -36,14 +36,18 @@ node {
                 }
             }
 
+            // Optional: Run tests (disabled)
             // stage('Run Tests in DevHub Org') {
-            //     def rc = command "${toolbelt}/sf apex run test --target-org HubOrg --wait 10 --result-format tap --code-coverage --test-level ${TEST_LEVEL}"
+            //     def rc = command "${toolbelt}/sf apex run test --target-org HubOrg --wait 10 --result-format tap --code-coverage --test-level NoTestRun"
             //     if (rc != 0) {
             //         error 'Salesforce unit tests run in Dev Hub org failed.'
             //     }
             // }
 
+            // Package creation disabled
+            /*
             stage('Create Package Version') {
+                def PACKAGE_NAME = '0Ho1U000000CaUzSAK'
                 def output
                 if (isUnix()) {
                     output = sh(returnStdout: true, script: "${toolbelt}/sf package version create --package ${PACKAGE_NAME} --installation-key-bypass --wait 10 --json --target-dev-hub HubOrg")
@@ -52,13 +56,11 @@ node {
                     output = output.readLines().drop(1).join(" ")
                 }
 
-                // Wait 5 minutes for package replication.
                 sleep 300
 
                 def jsonSlurper = new JsonSlurperClassic()
                 def response = jsonSlurper.parseText(output)
-
-                PACKAGE_VERSION = response.result.SubscriberPackageVersionId
+                def PACKAGE_VERSION = response.result.SubscriberPackageVersionId
                 echo "Package Version Created: ${PACKAGE_VERSION}"
             }
 
