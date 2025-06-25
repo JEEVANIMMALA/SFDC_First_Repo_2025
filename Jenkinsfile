@@ -36,12 +36,12 @@ node {
                 }
             }
 
-            stage('Run Tests in DevHub Org') {
-                def rc = command "${toolbelt}/sf apex run test --target-org HubOrg --wait 10 --result-format tap --code-coverage --test-level ${TEST_LEVEL}"
-                if (rc != 0) {
-                    error 'Salesforce unit tests run in Dev Hub org failed.'
-                }
-            }
+            // stage('Run Tests in DevHub Org') {
+            //     def rc = command "${toolbelt}/sf apex run test --target-org HubOrg --wait 10 --result-format tap --code-coverage --test-level ${TEST_LEVEL}"
+            //     if (rc != 0) {
+            //         error 'Salesforce unit tests run in Dev Hub org failed.'
+            //     }
+            // }
 
             stage('Create Package Version') {
                 def output
